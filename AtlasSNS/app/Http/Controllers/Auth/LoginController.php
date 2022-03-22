@@ -51,4 +51,9 @@ class LoginController extends Controller
         }
         return view("auth.login");
     }
+
+    public function getLogout(){
+        Auth::logout(); //ログアウトになる
+        return redirect("/login"); //redirect⇒URL転送
+    }
 }

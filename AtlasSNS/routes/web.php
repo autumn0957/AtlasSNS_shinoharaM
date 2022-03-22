@@ -21,13 +21,15 @@
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
-Route::post('/login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@login');//ログイン画面
 
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
+
+Route::get('/logout', 'Auth\LoginController@getLogout');//ログアウト押したときの処理
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
@@ -38,3 +40,9 @@ Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+//Route::get or post('URL', 'Controller名@繋げたいメソッド');
+//投稿ページに飛ぶ
+//ルートの後はget or POST　その後行先URL　更にその後にController@の後はメソッド(関数)
+
+//次の飛ぶ場所や、動かしたい機能を選択するページ⇒web.php
