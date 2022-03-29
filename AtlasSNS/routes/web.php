@@ -17,6 +17,9 @@
 // Route::get('/home', 'HomeController@index')->name('home');
 
 //Auth::routes();
+Route::get('/logout', 'Auth\LoginController@getLogout');//ログアウト押したときの処理
+
+//Route::post('/resister', 'Auth\RegisterController@validator');
 
 
 //ログアウト中のページ
@@ -24,12 +27,11 @@ Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');//ログイン画面
 
 Route::get('/register', 'Auth\RegisterController@register');
-Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/register', 'Auth\RegisterController@register');//新規登録
 
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
-Route::get('/logout', 'Auth\LoginController@getLogout');//ログアウト押したときの処理
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
@@ -40,6 +42,9 @@ Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+//ユーザー登録
+//Route::get('register', 'Auth\RegisterController@)
 
 //Route::get or post('URL', 'Controller名@繋げたいメソッド');
 //投稿ページに飛ぶ

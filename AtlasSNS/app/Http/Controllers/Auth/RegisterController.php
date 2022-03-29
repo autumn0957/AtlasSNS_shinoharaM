@@ -52,6 +52,12 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255',
             'mail' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
+        ],
+
+       $message = [
+            'username' => '名前を入力してください',
+            'mail' => 'メールアドレス形式である必要があります',
+            'password' => 'パスワードは4文字以上である必要があります',
         ]);
     }
 
@@ -70,6 +76,27 @@ class RegisterController extends Controller
         ]);
     }
 
+    //入力から確認へ遷移する際の処理
+    function post(Request $request){
+        $this->validator($request->all())->validate();
+        $input=$request->only($this->formItems);
+
+        //セッションに書き込む
+        $request->session()->put("form_input", $input);
+        return redirect()->action($this->form_confirm);
+    }
+
+    /**
+     * 登録処理
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    /*public function register(Request $request){
+        //セッションから値を取り出す
+        $input=$request->session()->
+    }*/
+
 
     // public function registerForm(){
     //     return view("auth.register");
@@ -82,10 +109,18 @@ class RegisterController extends Controller
             $this->create($data);
             return redirect('added');
         }
+        $message = [
+            'username' => '名前を入力してください',
+            'mail' => 'メールアドレス形式である必要があります',
+            'password' => 'パスワードは4文字以上である必要があります',
+        ];
+
         return view('auth.register');
     }
 
     public function added(){
         return view('auth.added');
     }
+    //新規登録のための処理
+
 }
