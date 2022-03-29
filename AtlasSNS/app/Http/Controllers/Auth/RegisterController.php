@@ -77,7 +77,7 @@ class RegisterController extends Controller
     }
 
     //入力から確認へ遷移する際の処理
-    function post(Request $request){
+ /*   function post(Request $request){
         $this->validator($request->all())->validate();
         $input=$request->only($this->formItems);
 

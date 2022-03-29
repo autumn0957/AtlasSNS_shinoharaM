@@ -27,7 +27,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
+
+        /**
+     * ログアウトしたときの画面遷移先
+     */
+    protected function loggedOut(\Illuminate\Http\Request $request)
+    {
+        return redirect('/login');
+    }
 
     /**
      * Create a new controller instance.
@@ -38,6 +46,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //========ここにlogoutのメソッドを足します。================
+   /* public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/login');
+    }*/
+//========================================================
 
     public function login(Request $request){
         if($request->isMethod('post')){
