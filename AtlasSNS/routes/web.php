@@ -43,8 +43,20 @@ Route::get('/search','UsersController@index');
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-//ユーザー登録
-//Route::get('register', 'Auth\RegisterController@)
+//FF
+Route::get('/', function(){
+    return view('welcome');
+});
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+//ログイン状態
+Route::group(['middleware'=>'auth'], function(){
+    //ユーザー関連
+    Route::resource('users', 'UsersController');
+});
+
+Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
 
 //Route::get or post('URL', 'Controller名@繋げたいメソッド');
 //投稿ページに飛ぶ
