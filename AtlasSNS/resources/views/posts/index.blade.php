@@ -3,10 +3,10 @@
 @section('content')
 <!--<h2>機能を実装していきましょう。</h2>-->
 
-<div class="sontainer">
-    <div class="row justify-content-conter">
+<div class="container">
+    <div class="row justify-content-center">
         <div class="col-md-8">
-            @foreach ($all_users as $user)
+            @foreach ($users as $user) 
             <div class="card">
                 <div class="card-header p-3 w-100 d-flex">
                     <img src="{{ $user->profile_image }}" class="rounded-circle" width="50" height="50">
@@ -16,7 +16,11 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
+    </div>
+    <div class="my-4 d-flex justify-content-center">
+        {{ $users->links() }}
     </div>
 </div>
 
