@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function index(/*User $user*/){
+   // public function index(/*User $user*/){
         /*$all_users=$user->getAllUsers(auth()->user()->id); //userテーブルから各コードから取り出す
 
         return view('users.index',[
             'all_users' => $all_users
         ]);*/
-        $users = User::all();
-        return view('users.index', ['users' => $users]);
-    }
+       /* $users = User::all();*/
+
+       //
+    //   $users = DB::table('users')->get();
+   //     return view('posts.index', ['users' => $users]);
+  //  }
 
 /*    public function getAllUsers(Int $user_id)
     {
@@ -28,3 +31,4 @@ class UsersController extends Controller
         return view('users.search');
     }
 }
+
