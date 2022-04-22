@@ -19,3 +19,5 @@ class PostsController extends Controller
     //   $users = DB::table('users')->get();
    //     return view('posts.index', ['users' => $users]);
   //  }
+
+  ?>
