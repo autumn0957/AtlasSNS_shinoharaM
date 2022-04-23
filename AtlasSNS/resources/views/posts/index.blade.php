@@ -13,15 +13,16 @@
                     <div class="ml-2 d-flex flex-column">
                         <p class="mb-0">{{ $user->username }}</p><!--ユーザー表示させる-->
                         <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->username }}</a>
+                        <!--user_id⇒誰の投稿か-->
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
-    <div class="my-4 d-flex justify-content-center">
+   {{-- <div class="my-4 d-flex justify-content-center">
         {{ $users->links() }}
-    </div>
+    </div> --}}
 </div>
 
 @endsection
