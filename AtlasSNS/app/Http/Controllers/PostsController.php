@@ -15,9 +15,7 @@ class PostsController extends Controller
     }
 }
 
-   // public function index(){
-    //   $users = DB::table('users')->get();
-   //     return view('posts.index', ['users' => $users]);
-  //  }
+   // ツイート表示
 
   ?>
+
