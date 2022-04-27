@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                   <a href=" {{ url('/top') }} "> Laravel</a>
                 </div>
 
                 <div class="links">
