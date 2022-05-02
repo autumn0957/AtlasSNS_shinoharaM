@@ -52,12 +52,6 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255',
             'mail' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
-        ],
-
-       $message = [
-            'username' => '名前を入力してください',
-            'mail' => 'メールアドレス形式である必要があります',
-            'password' => 'パスワードは4文字以上である必要があります',
         ]);
     }
 
@@ -109,11 +103,7 @@ class RegisterController extends Controller
             $this->create($data);
             return redirect('added');
         }
-        $message = [
-            'username' => '名前を入力してください',
-            'mail' => 'メールアドレス形式である必要があります',
-            'password' => 'パスワードは4文字以上である必要があります',
-        ];
+
 
         return view('auth.register');
     }
