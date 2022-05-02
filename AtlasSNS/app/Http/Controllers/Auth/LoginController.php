@@ -37,6 +37,8 @@ class LoginController extends Controller
         return redirect('/login');
     }
 
+   
+
     /**
      * Create a new controller instance.
      *
