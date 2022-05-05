@@ -30,33 +30,19 @@ Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');//新規登録
 
 Route::get('/added', 'Auth\RegisterController@added');
-Route::post('/added', 'Auth\RegisterController@added');
+Route::post('/added', 'Auth\RegisterController@added');//新規登録後画面
 
 
 //ログイン中のページ
-Route::get('/top','PostsController@index');
+Route::get('/top','PostsController@index');//ホーム
+Route::get('/profile','UsersController@profile');//プロフィール
 
-Route::get('/profile','UsersController@profile');
+Route::get('/search','UsersController@index');//検索
+Route::get('/follow-list','PostsController@index');//フォローリスト
+Route::get('/follower-list','PostsController@index');//フォロワーリスト
 
-Route::get('/search','UsersController@index');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
 
-//FF
-Route::get('/', function(){
-    return view('welcome');
-});
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
-//ログイン状態
-Route::group(['middleware'=>'auth'], function(){
-    //ユーザー関連
-    Route::resource('users', 'UsersController');
-});
-
-Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
 
 //Route::get or post('URL', 'Controller名@繋げたいメソッド');
 //投稿ページに飛ぶ

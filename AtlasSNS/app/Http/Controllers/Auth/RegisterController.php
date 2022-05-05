@@ -70,32 +70,6 @@ class RegisterController extends Controller
         ]);
     }
 
-    //入力から確認へ遷移する際の処理
- /*   function post(Request $request){
-        $this->validator($request->all())->validate();
-        $input=$request->only($this->formItems);
-
-        //セッションに書き込む
-        $request->session()->put("form_input", $input);
-        return redirect()->action($this->form_confirm);
-    }
-
-    /**
-     * 登録処理
-     * 
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    /*public function register(Request $request){
-        //セッションから値を取り出す
-        $input=$request->session()->
-    }*/
-
-
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
-
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
@@ -108,6 +82,8 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
+
+    
     public function added(){
         return view('auth.added');
     }
