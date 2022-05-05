@@ -41,7 +41,9 @@ Route::get('/search','UsersController@index');//検索
 Route::get('/follow-list','PostsController@index');//フォローリスト
 Route::get('/follower-list','PostsController@index');//フォロワーリスト
 
-
+//FF機能
+Route::post('/users/{user}/follow', 'FollowsController@follow');
+Route::post('/users/{user}/unfollow', 'FollowsController@unfollow');
 
 
 //Route::get or post('URL', 'Controller名@繋げたいメソッド');
