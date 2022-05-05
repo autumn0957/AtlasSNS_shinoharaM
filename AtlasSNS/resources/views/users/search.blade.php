@@ -13,7 +13,7 @@
 
 @foreach($users as $user)
 <a href="{{ route('users.show', ['user => $user']) }}">
-    {{ $user->name }}
+    {{ $user->username }}
 </a>
 @endforeach
 
