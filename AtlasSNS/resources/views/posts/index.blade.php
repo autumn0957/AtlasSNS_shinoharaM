@@ -16,7 +16,7 @@
                         <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->username }}</a>
                         <!--user_id⇒誰の投稿か-->
                     </div>
-                    @if (auth()->user()->followUsers($user->id))
+                    {{-- FFコード、あとまわし @if (auth()->user()->followUsers($user->id))
                     <div class="px-2">
                         <span class="px-1 bg-secondary text-ligt">フォローされています</span>
                     </div>
@@ -34,7 +34,7 @@
                             <button type="submit" class="btn btn-primary">フォローする</button>
                         </from>
                         @endif
-                    </div>
+                    </div>--}}
                 </div>
             </div>
             @endforeach
