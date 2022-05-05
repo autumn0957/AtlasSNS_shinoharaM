@@ -25,7 +25,9 @@
         <h1><a><img src="images/logo.png"></a></h1>
             <div id="">
                 <div id="">
+                <button type="submit">
                     <p><?php $user = Auth::user(); ?>{{$user->username}}さん<img src="images/arrow.png"></p>
+                    </button>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
