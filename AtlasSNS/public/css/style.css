@@ -104,3 +104,14 @@ header{
     display: block;
 }
 
+.btn-search{
+    text-align: center;
+}
+
+.btn-search a{
+    display: inline-block;
+    background-color: #186AC9;
+    color: #fff;
+    padding: 10px 40px;
+    border-radius:7px;
+}
