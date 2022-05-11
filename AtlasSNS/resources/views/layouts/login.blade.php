@@ -18,23 +18,25 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    
 </head>
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                <button type="submit">
-                    <p><?php $user = Auth::user(); ?>{{$user->username}}さん<img src="images/arrow.png"></p>
-                    </button>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
+        <h1><a href="/top"><img class=top_head_logo src="images/atlas.png"></a></h1>
+        
+            <ul class="menu">
+                <li class="menu__item">
+                    <a class="menu__item__link js-menu__item__link" href="">
+                    {{$user->username}}  さん  </a>
+                <ul class="submenu">
+                    <li class="submenu__item"><a href="/top">HOME</a></li>
+                    <li class="submenu__item"><a href="/profile/{{ Auth::user()->id }}">プロフィール編集</a></li>
+                    <li class="submenu__item"><a href="/logout">ログアウト</a></li>
                 </ul>
-            </div>
+                </li>
+            </ul>
+            <img src="images/arrow.png">
         </div>
     </header>
     <div id="row">
@@ -43,24 +45,27 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p> <?php $user = Auth::user(); ?>{{$user->username}} さんの</p>
+                <p> {{ $user->username }} さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+                <p class="btn"><a href="/followlist">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
                 <p>〇〇名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="/followerlist">フォロワーリスト</a></p>
             </div>
             <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+ 
+    <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
+
+
 </body>
 </html>

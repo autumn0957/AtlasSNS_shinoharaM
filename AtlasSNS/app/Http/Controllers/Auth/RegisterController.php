@@ -49,9 +49,26 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
+            'username' => 'required|min:2|max:12',
+            'mail' => 'required|email|min:5|max:40|unique:users',
+            'password' => 'required|min:8|max:20|confirmed|string',
+            'password_confirmation' => 'required'
+        ],
+        [
+            'username.required' => 'ユーザー名を入力してください',
+            'username.min' => 'ユーザー名は2文字以上、12文字以下で入力してください',
+            'username.max' => 'ユーザー名は2文字以上、12文字以下で入力してください',
+            'mail.required' => 'メールアドレスを入力してください',
+            'mail.email' => '有効なEメールアドレスを入力してください',
+            'mail.min' => 'メールアドレスは5文字以上、40文字以下で入力してください',
+            'mail.max' => 'メールアドレスは5文字以上、40文字以下で入力してください',
+            'mail.unique:users' => 'このメールアドレスは既に使われています',
+            'password.required' => 'パスワードを入力してください',
+            'password.min' => 'パスワードは8文字以上、20文字以下で入力してください',
+            'password.max' => 'パスワードは8文字以上、20文字以下で入力してください',
+            'password.confirmed' => '確認パスワードが一致していません',
+            'password_confirmation.required' => '確認パスワードを入力してください',
+            'password.alpha_num' => 'パスワードは半角数字で入力してください',
         ]);
     }
 
@@ -74,8 +91,8 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 
-            $this->create($data);
-            return redirect('added');
+            $this->create($data);//データの保存
+            return redirect('added');//特定のページへリダイレクト(URL転送)
         }
 
 

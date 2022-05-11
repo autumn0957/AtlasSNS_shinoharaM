@@ -6,6 +6,7 @@ body{
 /* header */
 header{
     background:#186AC9;
+    height: 92px;
 }
 
 /* main content */
@@ -20,3 +21,86 @@ header{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+#head{
+    display: flex;
+}
+
+.top_head_logo{
+    width: 110px;
+    margin: 25px;
+}
+
+.menu{
+    margin-left: auto;
+}
+
+.menu__item {
+  background: #186AC9;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 1px;
+}
+.menu__item__link {
+  color: #fff;
+  display: block;
+  line-height: 60px;
+  padding: 15px;
+  position: relative;
+  font-size: 1.5rem;
+  padding-right: 90px;
+}
+
+
+
+.menu__item__link:after {
+    border-right: solid 2px #fff; 
+    border-top: solid 2px #fff;
+    content: "";
+    display: block;
+    height: 8px;
+    position: absolute;
+    right: 25px;
+    top: 38%;
+    transform: rotate(135deg); 
+    transition: transform .3s ease-in-out, top .3s ease-in-out;
+    width: 8px;
+}
+
+.menu__item__link.open::after {
+    top: 45%; 
+    transform: rotate(-45deg); 
+  }
+
+
+ 
+.submenu {
+  background-color: #fff;
+  display: none;
+  z-index: 10;
+}
+.submenu__item {
+  z-index: 20;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #021d6e;
+  color: #222;
+  padding: 1rem;
+}
+
+.submenu li a:hover{
+    position: relative;
+    color: #fff;
+    
+}
+
+.submenu li:hover{
+    background-color: #021d6e;
+}
+
+.submenu li a{
+    display: block;
+}
+
