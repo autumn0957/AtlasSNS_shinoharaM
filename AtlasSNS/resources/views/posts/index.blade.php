@@ -4,6 +4,8 @@
 <!--<h2>機能を実装していきましょう。</h2>-->
 
 
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -40,9 +42,6 @@
             @endforeach
         </div>
     </div>
-   {{-- <div class="my-4 d-flex justify-content-center">
-        {{ $users->links() }}
-    </div> --}}
 </div>
 
 @endsection

@@ -45,6 +45,9 @@ Route::get('/follower-list','PostsController@index');//フォロワーリスト
 Route::post('/users/{user}/follow', 'FollowsController@follow');
 Route::post('/users/{user}/unfollow', 'FollowsController@unfollow');
 
+//ツイート関連
+//Route::resource('Tweets', 'PostsController@create');
+
 
 //Route::get or post('URL', 'Controller名@繋げたいメソッド');
 //投稿ページに飛ぶ

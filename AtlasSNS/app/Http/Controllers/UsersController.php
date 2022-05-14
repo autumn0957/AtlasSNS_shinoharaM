@@ -18,7 +18,15 @@ class UsersController extends Controller
 
         // クエリビルダ
         $query = User::query();
+        
 
+
+        return view('users.search')
+        ->with(
+            ['users' => $users,
+            'search' => $search,
+            'query' => $query]
+          );
         
     }
     
