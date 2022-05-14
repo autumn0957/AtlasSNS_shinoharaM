@@ -3,7 +3,18 @@
 @section('content')
 <!--<h2>機能を実装していきましょう。</h2>-->
 
-
+<body>
+    <div class="wrapper">
+        <form method="post">
+            <div style=" text-align: center;">
+               <input type="text" name="tweet" placeholder="投稿内容を入力してください">
+               <button type="submit">
+                   <img src="images/post.png">
+               </button>
+            </div>
+        </form>
+    </div>
+</body>
 
 
 <div class="container">
