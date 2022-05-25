@@ -5,8 +5,10 @@
 
 <body>
     <div class="wrapper">
-        <form method="post">
+        <form action="/top" method="post">
+            {{ csrf_field() }}
             <div style=" text-align: center;">
+            
                <input type="text" name="tweet" placeholder="投稿内容を入力してください">
                <button type="submit">
                    <img src="images/post.png">

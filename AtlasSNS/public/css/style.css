@@ -115,3 +115,9 @@ header{
     padding: 10px 40px;
     border-radius:7px;
 }
+
+.wrapper{
+    background: #fff;
+    height: 170px;
+}
+
