@@ -39,7 +39,7 @@ class UsersController extends Controller
     }
 
     
-
+//return viewのあとは、フォルダー名とblade名記述
     
 }
 

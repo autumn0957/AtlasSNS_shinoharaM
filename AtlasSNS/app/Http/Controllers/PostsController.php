@@ -14,21 +14,36 @@ class PostsController extends Controller
     
     //indexメソッド
     public function index(){ //ツイート表示コード追記
-        $users = \DB::table('users')->get();
-        return view('posts.index', ['users' => $users]);
+       $users = \DB::table('users')->get();
+        $lists = \DB::table('posts')->get(); //joinとかwhere get前に入れる
+
+
+       // $lists = List::with('user:id,name')->postsBy('id', 'asc');
+
+        return view('posts.index', [
+            'lists' => $lists, //18行目を一緒に持っていく
+        ]);
+
+       // return view('posts.index')
+        //->with([
+          //  'users'=>$users,
+            //'lists' =>$lists,
+        //]);
+        //['users' => $users])
+        //('posts.index', ['list'=>$list]);
         
     }
     
 
     public function create(Request $request){
         
-        $post = $request -> input('tweet');
+        $post = $request -> input('tweet'); //input('name属性')
         $user_id = Auth::user()->id; //ログインしているユーザーのIDを取得
         \DB::table('posts')->insert([ //データベースにデータ保存
             'post' => $post,
             'user_id' => $user_id
         ]);
-        return back();
+        return redirect('/top');
     }
 
     public function updateForm($id){  //編集

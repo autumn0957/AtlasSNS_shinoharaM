@@ -48,7 +48,7 @@ Route::post('/users/{user}/unfollow', 'FollowsController@unfollow');
 
 Route::post('/top', 'PostsController@create'); //新規ツイートをデータベースに保存
 Route::get('{id}/top', 'PostsController@updateForm');//編集
-Route::post('/top', 'PostsController@update');//更新
+// Route::post('/top', 'PostsController@update');//更新
 
 //ツイート関連
 //Route::resource('Tweets', 'PostsController@create');
