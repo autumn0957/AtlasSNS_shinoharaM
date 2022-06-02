@@ -15,29 +15,19 @@
                </button>
             </div>
         </form>
+
+        <div class="tweet-wrapper">{{--追記--}}
+            @foreach ($lists as $list) {{--$listsはポストコントローラーのクリエイトから--}}
+            <div style="padding:2rem; border-top: solid 1px #E6ECF0; border-bottom: solid 1px #E6ECF0;">
+                <p>{{ $list->post }}</p>{{--投稿表示--}}
+            </div>
+            @endforeach
+        </div>
     </div>
 </body>
 
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            @foreach ($lists as $list) {{--$listsはポストコントローラーのクリエイトから--}}
-            <div class="card">
-                <div class="card-header p-3 w-100 d-flex">
-                    
-                    <div class="ml-2 d-flex flex-column">
-                        
-                        <p>{{ $list->post }}</p>
-                        
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
+
 
 @endsection
 

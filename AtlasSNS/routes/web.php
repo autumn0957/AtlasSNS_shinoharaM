@@ -34,18 +34,18 @@ Route::post('/added', 'Auth\RegisterController@added');//新規登録後画面
 
 
 //ログイン中のページ
-Route::get('/top','PostsController@index');//ホーム表示データ取得
+Route::get('/top','PostsController@index');//ホーム表示データ取得（投稿）
 Route::get('/profile','UsersController@profile');//プロフィール
 
 Route::get('/search','UsersController@index');//検索
-Route::get('/follow-list','PostsController@index');//フォローリスト
-Route::get('/follower-list','PostsController@index');//フォロワーリスト
+//Route::get('/follow-list','PostsController@index');//フォローリスト
+//Route::get('/follower-list','PostsController@index');//フォロワーリスト
 
 //FF機能
 Route::post('/users/{user}/follow', 'FollowsController@follow');
 Route::post('/users/{user}/unfollow', 'FollowsController@unfollow');
 
-
+//投稿
 Route::post('/top', 'PostsController@create'); //新規ツイートをデータベースに保存
 Route::get('{id}/top', 'PostsController@updateForm');//編集
 // Route::post('/top', 'PostsController@update');//更新

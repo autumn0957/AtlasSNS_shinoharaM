@@ -14,8 +14,10 @@ class PostsController extends Controller
     
     //indexメソッド
     public function index(){ //ツイート表示コード追記
-       $users = \DB::table('users')->get();
-        $lists = \DB::table('posts')->get(); //joinとかwhere get前に入れる
+       $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
+        $lists = \DB::table('posts') //postsテーブル名
+        ->where('users' , 'posts')
+        ->get(); //joinとかwhere get前に入れる
 
 
        // $lists = List::with('user:id,name')->postsBy('id', 'asc');
@@ -43,7 +45,7 @@ class PostsController extends Controller
             'post' => $post,
             'user_id' => $user_id
         ]);
-        return redirect('/top');
+        return redirect('/top'); //redirect()はフォーム送信などのPOST時に利用されます。
     }
 
     public function updateForm($id){  //編集
