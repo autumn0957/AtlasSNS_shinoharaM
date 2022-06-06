@@ -8,35 +8,46 @@ use App\User;
 class UsersController extends Controller
 {
 
-    public function index(Request $request)
-    {
-                // ユーザー一覧をページネートで取得
-        $users = User::paginate(20);
-
-     // 検索フォームで入力された値を取得する
-        $search = $request->input('search');
-
-        // クエリビルダ
-        $query = User::query();
-        
-
-
+    public function index(){ //indexメソッドでseachページに飛ぶ
+        $users = User::all(); //ユーザー取得
+       // $search = $request->input('search'); //入力された値を取得
         return view('users.search')
-        ->with(
-            ['users' => $users,
-            'search' => $search,
-            'query' => $query]
-          );
-        
+        ->with('users', $users); 
+    }
+
+    
+
+    public function search(Request $request){
+        $keyword_name = $request->username;
+
+        if(!empty($keyword_name)){
+            $query = User::query();
+            $users = $query
+            ->where('name', 'like', '%' .$keyword_name. '%')
+            ->get();
+           // $message = "「".$keyword_name."」を含む名前の検索が完了しました。";
+
+            return view('users.search')
+            ->with([
+                'users' => $users,
+                'message' => $message,
+            ]);
+        }
+        else{
+            $message = "検索結果はありません。";
+            return view('users.search')
+            ->with('message', $message);
+        }
     }
     
+
 
     public function profile(){
         return view('users.profile');
     }
-    public function search(){
-        return view('users.search');
-    }
+ //   public function search(){
+   //     return view('users.search');
+    //}
 
     
 //return viewのあとは、フォルダー名とblade名記述

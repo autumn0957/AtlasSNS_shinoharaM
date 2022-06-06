@@ -1,22 +1,27 @@
 @extends('layouts.login')
 
 @section('content')
-<from class="mb-2 mt-4 text-conter" method="GET" action="/search">
-    <input class="from-control my-2 mr-5" type="search" placeholder="ユーザー名を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+<from method="GET" action="/search">
+    {{ csrf_field() }}
     <div class="d-flex justify-content-conter">
-        <button class="btn btn-info my-2" type="submit">検索</button>
-        <button class="btn btn-secondary my-2 ml-5">
-            <a href="/" class="text-white">クリア</a>
-        </button>
+        <input type="text" class="form-control col-md-5" placeholder="ユーザー名" name="search">
+    
+        <button type="submit">検索</button>
     </div>
 </from>
 
+<div class="search-wrapper">
 @foreach($users as $user)
 
-    {{ $user->username }}
-</a>
-@endforeach
+    <p>{{ $user->username }}</p>
 
+@endforeach
+</div>
+
+
+@if(!empty($message))
+<div class="alert alert-primary" role="alert">{{ $message }}</div>
+@endif
 
 
 @endsection

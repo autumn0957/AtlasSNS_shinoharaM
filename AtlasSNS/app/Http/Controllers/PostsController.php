@@ -10,29 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
-    
+    //一行一行翻訳する
     
     //indexメソッド
     public function index(){ //ツイート表示コード追記
        $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
         $lists = \DB::table('posts') //postsテーブル名
-        ->where('users' , 'posts')
-        ->get(); //joinとかwhere get前に入れる
-
-
-       // $lists = List::with('user:id,name')->postsBy('id', 'asc');
+        ->join('users') //直す
+        ->get(); 
 
         return view('posts.index', [
-            'lists' => $lists, //18行目を一緒に持っていく
+            'users' => $users, //18行目を一緒に持っていく
         ]);
-
-       // return view('posts.index')
-        //->with([
-          //  'users'=>$users,
-            //'lists' =>$lists,
-        //]);
-        //['users' => $users])
-        //('posts.index', ['list'=>$list]);
         
     }
     

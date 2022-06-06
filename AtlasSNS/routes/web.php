@@ -38,8 +38,9 @@ Route::get('/top','PostsController@index');//ホーム表示データ取得（�
 Route::get('/profile','UsersController@profile');//プロフィール
 
 Route::get('/search','UsersController@index');//検索
-//Route::get('/follow-list','PostsController@index');//フォローリスト
-//Route::get('/follower-list','PostsController@index');//フォロワーリスト
+
+Route::get('/followList','FollowsController@followList');//フォローリスト
+Route::get('/followerList','FollowsController@followerList');//フォロワーリスト
 
 //FF機能
 Route::post('/users/{user}/follow', 'FollowsController@follow');
@@ -49,6 +50,9 @@ Route::post('/users/{user}/unfollow', 'FollowsController@unfollow');
 Route::post('/top', 'PostsController@create'); //新規ツイートをデータベースに保存
 Route::get('{id}/top', 'PostsController@updateForm');//編集
 // Route::post('/top', 'PostsController@update');//更新
+
+//検索ページ
+//Route::get('/search', 'UsersController@search'); //検索結果表示
 
 //ツイート関連
 //Route::resource('Tweets', 'PostsController@create');

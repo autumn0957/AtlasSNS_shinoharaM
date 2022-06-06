@@ -116,6 +116,21 @@ header{
     border-radius:7px;
 }
 
+.btn{
+    text-align: right;
+    font-size: 12px;
+}
+
+.btn a{
+    display: inline-block;
+    background-color: #186AC9;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius:7px;
+}
+
+
+
 .wrapper{
     background: #fff;
     height: 170px;

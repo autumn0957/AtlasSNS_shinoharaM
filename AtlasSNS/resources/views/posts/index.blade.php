@@ -17,9 +17,9 @@
         </form>
 
         <div class="tweet-wrapper">{{--追記--}}
-            @foreach ($lists as $list) {{--$listsはポストコントローラーのクリエイトから--}}
+            @foreach ($users as $user) {{--$listsはポストコントローラーのクリエイトから--}}
             <div style="padding:2rem; border-top: solid 1px #E6ECF0; border-bottom: solid 1px #E6ECF0;">
-                <p>{{ $list->post }}</p>{{--投稿表示--}}
+                <p>{{ $user->post }}</p>{{--投稿表示--}}
             </div>
             @endforeach
         </div>
