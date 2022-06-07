@@ -18,7 +18,7 @@ class UsersController extends Controller
     
 
     public function search(Request $request){
-        $keyword_name = $request->username;
+        $keyword_name = $request->search;
 
         if(!empty($keyword_name)){
             $query = User::query();

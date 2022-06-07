@@ -31,7 +31,7 @@
                     さん  </a>
                 <ul class="submenu">
                     <li class="submenu__item"><a href="/top">HOME</a></li>
-                    <li class="submenu__item"><a href="/profile/{{ Auth::user()->id }}">プロフィール編集</a></li>
+                    <li class="submenu__item"><a href="/profile">プロフィール編集</a></li>
                     <li class="submenu__item"><a href="/logout">ログアウト</a></li>
                 </ul>
                 </li>
