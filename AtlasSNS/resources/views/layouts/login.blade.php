@@ -28,7 +28,7 @@
             <ul class="menu">
                 <li class="menu__item">
                     <a class="menu__item__link js-menu__item__link" href="">
-                    さん  </a>
+                    {{Auth::user()->username}}さん  </a>
                 <ul class="submenu">
                     <li class="submenu__item"><a href="/top">HOME</a></li>
                     <li class="submenu__item"><a href="/profile">プロフィール編集</a></li>
@@ -45,7 +45,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>  さんの</p>
+                <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>

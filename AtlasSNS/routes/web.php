@@ -55,8 +55,7 @@ Route::get('{id}/top', 'PostsController@updateForm');//編集
 Route::get('/search','UsersController@index');//検索画面表示
 Route::post('/search', 'UsersController@search'); //検索機能 get post確認し、どっちかがpost
 
-//ツイート関連
-//Route::resource('Tweets', 'PostsController@create');
+
 
 
 //Route::get or post('URL', 'Controller名@繋げたいメソッド');

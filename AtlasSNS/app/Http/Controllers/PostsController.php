@@ -13,8 +13,8 @@ class PostsController extends Controller
     //一行一行翻訳する
     
     //indexメソッド
-    public function index(){ //ツイート表示コード追記
-     //  $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
+    public function index(){ //topページに表示するもの全て
+       $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
         $lists = \DB::table('posts') //postsテーブル名 「;」までセット
         ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
         ->orderby('posts.created_at', 'DESC') //調べて直す
