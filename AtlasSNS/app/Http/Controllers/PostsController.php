@@ -14,13 +14,16 @@ class PostsController extends Controller
     
     //indexメソッド
     public function index(){ //ツイート表示コード追記
-       $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
-        $lists = \DB::table('posts') //postsテーブル名
-        ->join('users') //直す
+     //  $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
+        $lists = \DB::table('posts') //postsテーブル名 「;」までセット
+        ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
+        ->orderby('posts.created_at', 'DESC') //調べて直す
         ->get(); 
+       // $lists ->set('orderby', 'ASC');
 
         return view('posts.index', [
-            'users' => $users, //18行目を一緒に持っていく
+         //   'users' => $users, 
+            'lists' => $lists,
         ]);
         
     }

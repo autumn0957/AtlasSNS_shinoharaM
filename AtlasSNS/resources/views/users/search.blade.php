@@ -1,14 +1,14 @@
 @extends('layouts.login')
 
 @section('content')
-<from method="GET" action="/search">
+<form method="POST" action="/search">
     {{ csrf_field() }}
     <div class="d-flex justify-content-conter">
         <input type="text" class="form-control col-md-5" placeholder="ユーザー名" name="search">
     
         <button type="submit">検索</button>
     </div>
-</from>
+</form>
 
 <div class="search-wrapper">
 @foreach($users as $user)

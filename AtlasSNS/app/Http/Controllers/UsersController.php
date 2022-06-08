@@ -23,14 +23,15 @@ class UsersController extends Controller
         if(!empty($keyword_name)){
             $query = User::query();
             $users = $query
-            ->where('name', 'like', '%' .$keyword_name. '%')
+            ->where('username', 'like', '%' .$keyword_name. '%') 
+            //where('カラム名',  like '%検索ワード%')
             ->get();
            // $message = "「".$keyword_name."」を含む名前の検索が完了しました。";
 
             return view('users.search')
             ->with([
                 'users' => $users,
-                'message' => $message,
+               // 'message' => $message,
             ]);
         }
         else{
