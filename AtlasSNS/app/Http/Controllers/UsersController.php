@@ -7,6 +7,10 @@ use App\User;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(){ //indexメソッドでseachページに飛ぶ
         $users = User::all(); //ユーザー取得
@@ -46,6 +50,8 @@ class UsersController extends Controller
     public function profile(){
         return view('users.profile');
     }
+
+   
  //   public function search(){
    //     return view('users.search');
     //}

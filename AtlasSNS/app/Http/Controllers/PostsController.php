@@ -10,20 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //一行一行翻訳する
     
     //indexメソッド
     public function index(){ //topページに表示するもの全て
-       $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
+    //   $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
         $lists = \DB::table('posts') //postsテーブル名 「;」までセット
         ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
-        ->orderby('posts.created_at', 'DESC') //調べて直す
+        ->where('posts', '=', 'created_at')
+        ->orderby('posts.created_at', 'DESC') //ツイート順
         ->get(); 
-       // $lists ->set('orderby', 'ASC');
+       //joinの下に created_atがpostテーブルのものになるよに記述
 
         return view('posts.index', [
          //   'users' => $users, 
             'lists' => $lists,
+       
         ]);
         
     }
@@ -58,6 +64,16 @@ class PostsController extends Controller
         return back();
     }
 
+    public function delete($id) //ツイート削除
+    {
+        dd($id);
+       // $user_id = Auth::user()->id; postテーブルになるように記述
+        \DB::table('posts')
+        ->where('id', $id)
+        ->delete();
+
+        return redirect('/top'); //URL転送
+    }
 
     
 }

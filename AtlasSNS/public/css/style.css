@@ -136,3 +136,12 @@ header{
     height: 170px;
 }
 
+.post-text{
+    text-align: center;
+}
+
+.btn-tweet{
+    border: none;
+    width: 0px;
+    height: 0px;
+}

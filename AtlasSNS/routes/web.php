@@ -37,6 +37,10 @@ Route::post('/added', 'Auth\RegisterController@added');//新規登録後画面
 
 Route::get('/profile','UsersController@profile');//プロフィール
 
+//Route::get('profile', function() {
+    // 認証済みのユーザーのみが入れる
+//})->middleware('auth');
+
 
 Route::get('/followList','FollowsController@followList');//フォローリスト
 Route::get('/followerList','FollowsController@followerList');//フォロワーリスト
@@ -50,10 +54,11 @@ Route::get('/top','PostsController@index');//ホーム表示データ取得（�
 Route::post('/top', 'PostsController@create'); //新規ツイートをデータベースに保存
 Route::get('{id}/top', 'PostsController@updateForm');//編集
 // Route::post('/top', 'PostsController@update');//更新
+Route::get('/post/{id}/delete', 'PostsController@delete'); //削除
 
 //検索ページ
 Route::get('/search','UsersController@index');//検索画面表示
-Route::post('/search', 'UsersController@search'); //検索機能 get post確認し、どっちかがpost
+Route::post('/search', 'UsersController@search'); //検索機能 
 
 
 
