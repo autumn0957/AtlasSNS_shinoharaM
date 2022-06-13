@@ -19,12 +19,20 @@ header{
 }
 #side-bar{
     flex: 0 0 19%;
+    line-height: 1.7rem;
     border-left: 1px solid #727272;
+    border-bottom: 1px solid #727272;
+}
+
+#confirm{ /* ユーザー検索位置 */
+    height: 130%;
 }
 
 #head{
     display: flex;
 }
+
+
 
 .top_head_logo{
     width: 110px;
@@ -145,3 +153,16 @@ header{
     width: 0px;
     height: 0px;
 }
+
+.post-text{
+    border-bottom: 10px solid #e8e3e3;
+}
+
+.post-text-search{
+    padding: 70px;
+    border-bottom: 10px solid #e8e3e3;
+}
+
+/* .search-wrapper{
+    margin: 100px;  
+}   何故かサイドバーも一緒に移動してしまう  */

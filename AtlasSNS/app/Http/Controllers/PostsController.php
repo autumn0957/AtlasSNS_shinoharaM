@@ -21,7 +21,7 @@ class PostsController extends Controller
     //   $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
         $lists = \DB::table('posts') //postsテーブル名 「;」までセット
         ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
-        ->where('posts', '=', 'created_at')
+       // ->where('posts', '=', 'created_at')
         ->orderby('posts.created_at', 'DESC') //ツイート順
         ->get(); 
        //joinの下に created_atがpostテーブルのものになるよに記述

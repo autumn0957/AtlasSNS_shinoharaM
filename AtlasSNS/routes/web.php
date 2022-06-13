@@ -23,7 +23,7 @@ Route::get('/logout', 'Auth\LoginController@getLogout');//ログアウト押し�
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login'); //name以降ミドルウェア処理
 Route::post('/login', 'Auth\LoginController@login');//ログイン画面
 
 Route::get('/register', 'Auth\RegisterController@register');

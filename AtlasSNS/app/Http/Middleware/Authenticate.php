@@ -17,12 +17,8 @@ class Authenticate extends Middleware
     {
         return route('login');
     }
+    //名前つきルーティング。ここでミドルウェア処理
 
      
-  //  protected function redirectTo($request)
-   // {
-     //   if (! $request->expectsJson()) {
-       //     return route('login');
-       // }
-   // }
+  
 }

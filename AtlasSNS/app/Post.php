@@ -12,6 +12,11 @@ class Post extends Model
       //  $follow_ids[] = $user_id;
         //return $this->whereIN('user_id', $follow_ids)->orderBy('created_at', 'DEsc')->paginate(50);
     //}
+
+  //  public function User(){
+    //    return $this->belongsTo('App\User');
+    //}
+
     protected $fillable = [
         'user_id', 'post',
     ];
