@@ -21,7 +21,7 @@ class PostsController extends Controller
     //   $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
         $lists = \DB::table('posts') //postsテーブル名 「;」までセット
         ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
-       // ->where('posts', '=', 'created_at')
+        ->select('users.images', 'users.username', 'posts.post', 'posts.created_at', 'posts.id')
         ->orderby('posts.created_at', 'DESC') //ツイート順
         ->get(); 
        //joinの下に created_atがpostテーブルのものになるよに記述
@@ -66,7 +66,7 @@ class PostsController extends Controller
 
     public function delete($id) //ツイート削除
     {
-        dd($id);
+        //dd($id);
        // $user_id = Auth::user()->id; postテーブルになるように記述
         \DB::table('posts')
         ->where('id', $id)
