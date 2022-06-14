@@ -30,19 +30,15 @@ class UsersController extends Controller
             ->where('username', 'like', '%' .$keyword_name. '%') 
             //where('カラム名',  like '%検索ワード%')
             ->get();
-           // $message = "「".$keyword_name."」を含む名前の検索が完了しました。";
+            $message = "検索ワード：$keyword_name";
 
             return view('users.search')
             ->with([
                 'users' => $users,
-               // 'message' => $message,
+                'message' => $message,
             ]);
         }
-        else{
-            $message = "検索結果はありません。";
-            return view('users.search')
-            ->with('message', $message);
-        }
+        
     }
     
 

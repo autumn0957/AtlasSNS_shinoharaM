@@ -34,14 +34,7 @@ Route::post('/added', 'Auth\RegisterController@added');//新規登録後画面
 
 
 //ログイン中のページ
-
 Route::get('/profile','UsersController@profile');//プロフィール
-
-//Route::get('profile', function() {
-    // 認証済みのユーザーのみが入れる
-//})->middleware('auth');
-
-
 Route::get('/followList','FollowsController@followList');//フォローリスト
 Route::get('/followerList','FollowsController@followerList');//フォロワーリスト
 
