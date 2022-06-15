@@ -40,14 +40,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    
+
+    
+
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    * Get a validator for an incoming registration request.
+    *
+    * @param  array  $data
+    * @return \Illuminate\Contracts\Validation\Validator
+    */
     protected function validator(array $data)
     {
+       // dd();
         return Validator::make($data, [
             'username' => 'required|min:2|max:12',
             'mail' => 'required|email|min:5|max:40|unique:users',
@@ -81,21 +86,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data) //登録処理
     {
+        //dd();
         return User::create([ //ユーザーテーブルに登録する
             'username' => $data['username'], //ユーザー名
             'mail' => $data['mail'], //メアド
             'password' => bcrypt($data['password']), //PW,bcrypt⇒ユーザーパスワードを保存するための安全なBcrypt
         ]);
-        $this->validator;
+       // $this->validator;
     }
 
     public function register(Request $request){
         if($request->isMethod('post')){ 
             //isMethod:現在のページが指定したHTTP動詞かどうかをチェックし、合っていればtrueを違う場合はfalseを返す
             $data = $request->input();
-
+            $user = $request->input('username'); //addedに名前表示する為のコード
+           // dd($user);
             $this->create($data);//データの保存 createメソッド呼び出し
-            return redirect('added');//特定のページへリダイレクト(URL転送)
+
+            return view('auth.added')//特定のページへリダイレクト(URL転送)
+            ->with([
+                'user' => $user,
+            ]);
         }
 
 
