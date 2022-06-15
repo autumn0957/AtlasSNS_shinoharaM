@@ -18,13 +18,11 @@ class PostsController extends Controller
     
     //indexメソッド
     public function index(){ //topページに表示するもの全て
-    //   $users = \DB::table('users')->get(); //usersテーブル名 全てのデータベース取得
         $lists = \DB::table('posts') //postsテーブル名 「;」までセット
         ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
-        ->select('users.images', 'users.username', 'posts.post', 'posts.created_at', 'posts.id') //topPに表示させる情報
+        ->select('users.images', 'users.username', 'posts.post', 'posts.created_at', 'posts.id', 'posts.user_id') //topPに表示させる情報
         ->orderby('posts.created_at', 'DESC') //ツイート順
         ->get(); 
-       //joinの下に created_atがpostテーブルのものになるよに記述
 
         return view('posts.index', [
          //   'users' => $users, 
@@ -36,7 +34,12 @@ class PostsController extends Controller
     
 
     public function create(Request $request){
-        
+        $validator = $request->validate([ // バリデーション
+            'tweet' => ['required', 'string', 'max:150'], // 必須・文字であること・150文字まで
+        ],
+        [
+            //'tweet' => '1文字以上150文字以内で入力してください',
+        ]);
         $post = $request -> input('tweet'); //input('name属性')
         $user_id = Auth::user()->id; //ログインしているユーザーのIDを取得
         \DB::table('posts')->insert([ //データベースにデータ保存
@@ -66,8 +69,7 @@ class PostsController extends Controller
 
     public function delete($id) //ツイート削除
     {
-        //dd($id);
-       // $user_id = Auth::user()->id; postテーブルになるように記述
+        
         \DB::table('posts')
         ->where('id', $id)
         ->delete();

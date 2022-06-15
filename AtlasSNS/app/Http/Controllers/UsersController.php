@@ -22,6 +22,7 @@ class UsersController extends Controller
     
 
     public function search(Request $request){
+        
         $keyword_name = $request->search;
 
         if(!empty($keyword_name)){
@@ -29,13 +30,13 @@ class UsersController extends Controller
             $users = $query
             ->where('username', 'like', '%' .$keyword_name. '%') 
             //where('カラム名',  like '%検索ワード%')
+            ->orderby('id', 'DESC')
             ->get();
-            $message = "検索ワード：$keyword_name";
 
             return view('users.search')
             ->with([
                 'users' => $users,
-                'message' => $message,
+                'keyword_name' => $keyword_name,
             ]);
         }
         

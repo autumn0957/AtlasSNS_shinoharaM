@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'password_confirmation.required' => '確認パスワードを入力してください',
             'password.alpha_num' => 'パスワードは半角数字で入力してください',
         ]);
+        
     }
 
     /**
@@ -78,20 +79,22 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data) //登録処理
     {
-        return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
+        return User::create([ //ユーザーテーブルに登録する
+            'username' => $data['username'], //ユーザー名
+            'mail' => $data['mail'], //メアド
+            'password' => bcrypt($data['password']), //PW,bcrypt⇒ユーザーパスワードを保存するための安全なBcrypt
         ]);
+        $this->validator;
     }
 
     public function register(Request $request){
-        if($request->isMethod('post')){
+        if($request->isMethod('post')){ 
+            //isMethod:現在のページが指定したHTTP動詞かどうかをチェックし、合っていればtrueを違う場合はfalseを返す
             $data = $request->input();
 
-            $this->create($data);//データの保存
+            $this->create($data);//データの保存 createメソッド呼び出し
             return redirect('added');//特定のページへリダイレクト(URL転送)
         }
 
