@@ -34,7 +34,10 @@ Route::post('/added', 'Auth\RegisterController@added');//新規登録後画面
 
 
 //ログイン中のページ
-Route::get('/profile','UsersController@profile');//プロフィール
+Route::get('/profile','UsersController@profile');//プロフィール画面を表示させる
+Route::post('/profileup','UsersController@profileup');//プロフィール更新押したあとの処理
+
+
 Route::get('/followList','FollowsController@followList');//フォローリスト
 Route::get('/followerList','FollowsController@followerList');//フォロワーリスト
 

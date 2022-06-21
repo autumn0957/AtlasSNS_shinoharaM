@@ -95,8 +95,8 @@ class RegisterController extends Controller
        // $this->validator;
     }
 
-    public function register(Request $request){
-        if($request->isMethod('post')){ 
+    public function register(Request $request){ //登録とページの表示処理
+        if($request->isMethod('post')){  //登録の処理
             //isMethod:現在のページが指定したHTTP動詞かどうかをチェックし、合っていればtrueを違う場合はfalseを返す
             $data = $request->input();
             $user = $request->input('username'); //addedに名前表示する為のコード
@@ -110,7 +110,7 @@ class RegisterController extends Controller
         }
 
 
-        return view('auth.register');
+        return view('auth.register'); //登録がない場合の表示
     }
 
 

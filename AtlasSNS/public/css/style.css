@@ -166,3 +166,10 @@ header{
 /* .search-wrapper{
     margin: 100px;  
 }   何故かサイドバーも一緒に移動してしまう  */
+
+.profile{
+    text-align: center;
+}
+.UserProfile{
+  /*  display: flex; */
+}
