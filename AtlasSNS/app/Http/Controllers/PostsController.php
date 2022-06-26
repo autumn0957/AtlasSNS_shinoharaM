@@ -18,6 +18,7 @@ class PostsController extends Controller
     
     //indexメソッド
     public function index(){ //topページに表示するもの全て
+        $user = Auth::user();
         $lists = \DB::table('posts') //postsテーブル名 「;」までセット
         ->join('users', 'users.id', '=', 'posts.user_id') //usersテーブル繋げる、usersの中のidとpostsのidはイコール
         ->select('users.images', 'users.username', 'posts.post', 'posts.created_at', 'posts.id', 'posts.user_id') //topPに表示させる情報
@@ -25,7 +26,7 @@ class PostsController extends Controller
         ->get(); 
 
         return view('posts.index', [
-         //   'users' => $users, 
+            'user' => $user, 
             'lists' => $lists,
        
         ]);

@@ -67,18 +67,20 @@ class UsersController extends Controller
             'iconimage' => 'image',
           ]); */
   
-          $user = Auth::user(); //更新の処理(postのイメージ) 
+          $user = Auth::user(); //更新の処理(postのイメージ) ログインユーザー取得
+          $id = Auth::id(); //ログインしているユーザーidの取得
           //画像登録
-       //   $image = $request->file('iconimage')->store('public/images');
+          $image = $request->file('iconimage')->store('public/images');
        //   $validator->validate();
+
 
           $user->username = $request->input('username');
           $user->mail = $request->input('mail');
           $user->password = bcrypt($request->input('newpassword'));
           $user->bio = $request->input('bio');
-//              'images' => basename($image),
+          $user->images = basename($image);
           \DB::table('users') //usersテーブルをここで更新
-          ->where('id', $id)
+          ->where('id', $id)//これがないと全てのユーザー情報上書きされてしまう
           ->update([
               'username' => $user->username,
               'mail' => $user->mail,

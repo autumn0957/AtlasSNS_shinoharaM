@@ -11,7 +11,8 @@
                 @endif
             {{ csrf_field() }}
             <div class="post-text">
-            
+            <img src="{{ asset('storage/images/'.$user->images) }}"> {{--14,15代入 15は画像名表示されている dawn.pngを適当に作る（1つの手）--}}
+            <p>{{Auth::user()->images}}</p>
                <input type="text" name="tweet" placeholder="投稿内容を入力してください">
                <button type="submit" class="btn-tweet" >
                    <img src="images/post.png">
