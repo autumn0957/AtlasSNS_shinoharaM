@@ -60,7 +60,7 @@ class UsersController extends Controller
     /*  $validator = Validator::make($request->all(),[
             'username'  => 'required|min:2|max:12',
             'mail' => ['required|email|min:5|max:40|unique:users', Rule::unique('users')->ignore(Auth::id())],
-            //Rule::unique('users')->ignore(Auth::id())[>ignoreメソッドで、ログインしているユーザーのID以外をバリデーションで引っかかるように設定]
+            /メモ:/Rule::unique('users')->ignore(Auth::id())[>ignoreメソッドで、ログインしているユーザーのID以外をバリデーションで引っかかるように設定]
             'newpassword' => 'required|min:8|max:20|confirmed|string',
             'newpassword_confirmation' => 'required',
             'bio' => 'max:150',
@@ -86,6 +86,7 @@ class UsersController extends Controller
               'mail' => $user->mail,
               'password' => $user->password,
               'bio' => $user->bio,
+              'images' => $user->images,
           ]);
           
 

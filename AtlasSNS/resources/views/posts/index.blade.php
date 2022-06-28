@@ -12,7 +12,7 @@
             {{ csrf_field() }}
             <div class="post-text">
             <img src="{{ asset('storage/images/'.$user->images) }}"> {{--14,15代入 15は画像名表示されている dawn.pngを適当に作る（1つの手）--}}
-            <p>{{Auth::user()->images}}</p>
+            
                <input type="text" name="tweet" placeholder="投稿内容を入力してください">
                <button type="submit" class="btn-tweet" >
                    <img src="images/post.png">
@@ -25,7 +25,7 @@
             @foreach ($lists as $lists) {{--$listsはポストコントローラーのクリエイトから--}}
             <div style="padding:2rem; border-top: solid 1px #E6ECF0; border-bottom: solid 1px #E6ECF0;">
             <tr>
-              <td><img src="{{ $lists->images }}" class="rounded-circle" width="50" height="50"></td>{{--アイコン表示--}}
+              <td><img src="{{ asset('storage/images/'.$user->images) }}" class="rounded-circle" width="50" height="50"></td>{{--アイコン表示--}}
               <td>{{ $lists->username }}</td>{{--ユーザー名表示--}}
               <td>{{ $lists->post }}</td>{{--投稿表示--}} 
               <td>{{ $lists->created_at }}</td>{{--投稿日時表示--}}
