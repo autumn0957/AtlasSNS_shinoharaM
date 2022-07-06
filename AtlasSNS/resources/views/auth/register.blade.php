@@ -6,6 +6,14 @@
 
 <h2>新規ユーザー登録</h2>
 
+@if ($errors->any())
+<ul>
+    @foreach ($errors->all() as $error)
+    <li>※{{ $error }}</li>
+    @endforeach
+</ul>
+@endif
+
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
 

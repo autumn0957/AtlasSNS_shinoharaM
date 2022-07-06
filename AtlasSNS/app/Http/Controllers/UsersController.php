@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule; //後で復活させる
-use Validator;
+use Illuminate\Support\Facades\Validator;
+//use Validator;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -59,7 +60,7 @@ class UsersController extends Controller
        // dd($request->input('username'));
       $validator = Validator::make($request->all(),[
             'username'  => 'required|min:2|max:12',
-            'mail' => ['required|email|min:5|max:40|unique:users', Rule::unique('users')->ignore(Auth::id())],
+            'mail' => ['required|email:strict,dns,spoof|min:5|max:40|unique:users', Rule::unique('users')->ignore(Auth::id())],
             //メモ:Rule::unique('users')->ignore(Auth::id())[>ignoreメソッドで、ログインしているユーザーのID以外をバリデーションで引っかかるように設定]
             'newpassword' => 'required|min:8|max:20|confirmed|string',
             'newpassword_confirmation' => 'required|same:newpassword',
