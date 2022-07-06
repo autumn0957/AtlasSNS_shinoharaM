@@ -58,7 +58,8 @@ class UsersController extends Controller
     
     public function profileup(Request $request){ //更新押したときにtopに戻るようにする
        // dd($request->input('username'));
-      $validator = Validator::make($request->all(),[
+       if($request->isMethod('post')){
+       $rulus =[
             'username'  => 'required|min:2|max:12',
             'mail' => ['required|email:strict,dns,spoof|min:5|max:40|unique:users', Rule::unique('users')->ignore(Auth::id())],
             //メモ:Rule::unique('users')->ignore(Auth::id())[>ignoreメソッドで、ログインしているユーザーのID以外をバリデーションで引っかかるように設定]
@@ -66,11 +67,37 @@ class UsersController extends Controller
             'newpassword_confirmation' => 'required|same:newpassword',
             'bio' => 'max:150',
             'iconimage' => 'image',
-          ]); //バリデパスワード必須にする(一致するようにする)
-          if($validator->fails()){
+          ]; //バリデパスワード必須にする(一致するようにする)
+
+          $message = [
+            'username.required' => 'ユーザー名を入力してください',
+            'username.min' => 'ユーザー名は2文字以上、12文字以下で入力してください',
+            'username.max' => 'ユーザー名は2文字以上、12文字以下で入力してください',
+            'mail.required' => 'メールアドレスを入力してください',
+            'mail.email' => '有効なEメールアドレスを入力してください',
+            'mail.min' => 'メールアドレスは5文字以上、40文字以下で入力してください',
+            'mail.max' => 'メールアドレスは5文字以上、40文字以下で入力してください',
+            'mail.unique:users' => 'このメールアドレスは既に使われています',
+            'newpassword.required' => 'パスワードを入力してください',
+            'newpassword.min' => 'パスワードは8文字以上、20文字以下で入力してください',
+            'newpassword.max' => 'パスワードは8文字以上、20文字以下で入力してください',
+            'newpassword.confirmed' => '確認パスワードが一致していません',
+            'newpassword_confirmation.required' => '確認パスワードを入力してください',
+            'newpassword.alpha_num' => 'パスワードは半角数字で入力してください',
+        ];
+
+        $validator = Validator::make($request->all(), $rulus, $message);
+    
+            if($validator->fails()){ //ここがエラーでる
+                return redirect('/')
+                ->withErrors($validator)
+                ->withInput();
+            }
+
+        /*  if($validator->fails()){
             $validator->errors()->add('newpassword', __('The current newpassword_confirmation is incorrect.'));
             withErrors($validator) ->withInput();
-          }
+          } */
   
           $user = Auth::user(); //更新の処理(postのイメージ) ログインユーザー取得
           $id = Auth::id(); //ログインしているユーザーidの取得
@@ -96,8 +123,10 @@ class UsersController extends Controller
           //    'images' => $user->images,
           ]);
           
+        }
 
           return redirect('/top'); 
+          
     }
 
     /*    // フォロー

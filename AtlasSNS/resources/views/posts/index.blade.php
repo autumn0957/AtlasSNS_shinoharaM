@@ -32,8 +32,8 @@
 
              
               @if (Auth::user()->id == $lists->user_id) 
-              <td>{{--<a class="btn btn-primary" href="/post/{{$list->id}}">--}}
-                  <img src="images/edit.png" width="40" height="40"></td>{{--ツイート編集、アイコンのみ入れたのでのちほど編集--}}
+              <td><a class="btn btn-primary" href="/post/{{$lists->id}}/update-form">
+                  <img src="images/edit.png" width="40" height="40"></td>{{--ツイート編集--}}
               <td><a class="btn btn-danger" href="/post/{{$lists->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
                  <img src="images/trash-h.png" width="60" height="60"></a></td>{{--ツイート削除--}}
               @endif

@@ -104,7 +104,7 @@ class RegisterController extends Controller
                 'username' => 'required|min:2|max:12',
                 'mail' => 'required|email|min:5|max:40|unique:users',
                 'password' => 'required|min:8|max:20|confirmed|string',
-                'password_confirmation' => 'required|same:newpassword',
+                'password-confirm' => 'required|same:password',
             ];
             
             $message = [
@@ -120,14 +120,16 @@ class RegisterController extends Controller
                 'password.min' => 'パスワードは8文字以上、20文字以下で入力してください',
                 'password.max' => 'パスワードは8文字以上、20文字以下で入力してください',
                 'password.confirmed' => '確認パスワードが一致していません',
-                'password_confirmation.required' => '確認パスワードを入力してください',
+                'password-confirm.required' => '確認パスワードを入力してください',
                 'password.alpha_num' => 'パスワードは半角数字で入力してください',
             ];
+
+            //PW一致してても不一致にでる
     
             $validator = Validator::make($request->all(), $rulus, $message);
     
             if($validator->fails()){
-                return redirect('/register')
+                return redirect('/')
                 ->withErrors($validator)
                 ->withInput();
             }
