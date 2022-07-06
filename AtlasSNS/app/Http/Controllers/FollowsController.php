@@ -17,7 +17,7 @@ class FollowsController extends Controller
 
 
     //フォローする
-    public function follow(Request $request)
+   /* public function follow(Request $request)
     {
         FollowUser::firstOrCreate([
             'followed_user_id' => $request->post_user,
@@ -35,5 +35,5 @@ class FollowsController extends Controller
             $follow->delete();
             return false;
         }
-    }
+    }*/
 }
