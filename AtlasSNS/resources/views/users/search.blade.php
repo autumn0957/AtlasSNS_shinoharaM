@@ -21,10 +21,28 @@
 <div class="search-wrapper">
 @foreach($users as $user)
 
-@if (in_array($user->id, Auth::user()->follow_each()))
-@endif 
+{{--@if (in_array($user->id, Auth::user()->follow_each()))
+@endif --}}
 
     <p>{{ $user->username }}</p>
+
+    <div class="d-flex justify-content-end flex-grow-1">
+        @if (in_array($user->id, Auth::user()->follow_each()))
+        <form action="{{ route('unfollow', ['id' => $user->id]) }}" method="POST">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            
+            <button type="submit" class="btn btn-danger">フォロー解除</button>
+        </form>
+        @else
+        <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
+            {{ csrf_field() }}
+            
+            <button type="submit" class="btn btn-primary">フォローする</button>
+        </form>
+
+        @endif
+    </div>
 
 @endforeach
 </div>

@@ -42,8 +42,8 @@ Route::get('/followList','FollowsController@followList');//フォローリスト
 Route::get('/followerList','FollowsController@followerList');//フォロワーリスト
 
 //FF機能
-Route::post('/users/{user}/search', 'FollowsController@follow');
-Route::post('/users/{user}/search', 'FollowsController@unfollow');
+Route::post('/search/{user}/follow', 'UsersController@follow')->name('follow');
+Route::post('/search/{user}/unfollow', 'UsersController@unfollow')->name('follow');
 
 //投稿
 Route::get('/top','PostsController@index');//ホーム表示データ取得（投稿）
