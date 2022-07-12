@@ -129,35 +129,8 @@ class UsersController extends Controller
           
     }
 
-    /*    // フォロー
-    public function follow(User $user)
-    {
-        $follower = auth()->user();
-        // フォローしているか
-        $is_following = $follower->isFollowing($user->id);
-        if(!$is_following) {
-            // フォローしていなければフォローする
-            $follower->follow($user->id);
-            return back();
-        }
-    }
-
-    // フォロー解除
-    public function unfollow(User $user)
-    {
-        $follower = auth()->user();
-        // フォローしているか
-        $is_following = $follower->isFollowing($user->id);
-        if($is_following) {
-            // フォローしていればフォローを解除する
-            $follower->unfollow($user->id);
-            return back();
-        }
-    } */
-
-
     public function follow(Request $request){
-        FollowUser::firstOrCreate([
+        Users::firstOrCreate([
             'followed_id' => $request->post_user,
             'following_id' => $request->auth_user
         ]);
@@ -165,7 +138,7 @@ class UsersController extends Controller
     }
 
     public function unfollow(Request $request){
-        $follow = FollowUser::where('followed_id', $request->post_user)
+        $follow = Users::where('followed_id', $request->post_user)
         ->where('following_id', $request->auth_user)
         ->first();
         if($follow){

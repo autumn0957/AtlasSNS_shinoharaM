@@ -21,8 +21,6 @@
 <div class="search-wrapper">
 @foreach($users as $user)
 
-{{--@if (in_array($user->id, Auth::user()->follow_each()))
-@endif --}}
 
     <p>{{ $user->username }}</p>
 
